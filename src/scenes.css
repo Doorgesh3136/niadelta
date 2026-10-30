@@ -1,0 +1,46 @@
+/* ==== NiaDelta v2 - scenes.css (SCENES builder). Every selector is prefixed .scn ==== */
+.scn{position:relative;min-height:220px}
+.scn .scn-root{position:absolute;inset:0;overflow:hidden;pointer-events:none;-webkit-user-select:none;user-select:none;contain:layout paint style}
+.scn .scn-svg{position:absolute;inset:0;width:100%;height:100%;max-width:none;overflow:visible;display:block}
+/* the stage is a framed "picture-book page" (see .story .stage in styles.css): no feathered mask */
+.scn .scn-root{border-radius:inherit}
+/* ink outlines stay 1.5-2.5px on screen whatever the scale; draw-on paths scale with the art */
+.scn .scn-svg *{vector-effect:non-scaling-stroke}
+.scn .scn-svg .scn-dr{vector-effect:none}
+.scn .scn-tags{position:absolute;inset:0}
+.scn .scn-tag{position:absolute;left:0;top:0;box-sizing:border-box;width:max-content;max-width:min(13.5em,calc(100% - 16px));padding:6px 11px 7px;margin:0;
+  background:#FBF4E8;color:#0B2A3D;border:1.5px solid #0B2A3D;border-radius:12px;box-shadow:3px 3px 0 var(--c,#F8B518);
+  font:400 14px/1.32 var(--sans,"Instrument Sans",system-ui,-apple-system,"Segoe UI",Arial,sans-serif);letter-spacing:0;text-align:left;
+  opacity:0;visibility:hidden;transform-origin:50% 100%;backface-visibility:hidden}
+.scn .scn-tag b{display:block;font-weight:600;font-size:15px;line-height:1.25;letter-spacing:-.01em;text-wrap:balance}
+/* tags carry the label only: the full sentence lives in the caption (motion) or the chapter list (static) */
+.scn .scn-tag span{display:none!important}
+.scn .scn-rich .scn-tag{padding:7px 12px 8px}
+/* plinth labels: anchored under their object, colour-matched rule, leader line on the lower row */
+.scn .scn-tags .scn-tag.scn-pl{padding:4px 9px 5px;text-align:center;border-radius:10px;box-shadow:0 3px 0 var(--c,#F8B518)}
+.scn .scn-tags .scn-tag.scn-pl b{font-size:13px;line-height:1.2}
+.scn .scn-tags .scn-tag.scn-pl.scn-pls{padding:3px 7px 4px}
+.scn .scn-tags .scn-tag.scn-pl.scn-pls b{font-size:12px}
+.scn .scn-tags .scn-tag.scn-pl::before{content:"";position:absolute;left:var(--tx,50%);bottom:100%;width:1.5px;height:var(--ld,0px);margin-left:-.75px;background:#0B2A3D}
+.scn .scn-tags .scn-tag.scn-pl::after{top:-5.5px;bottom:auto}
+/* compact labels (short visual names; the full names stay in the caption + chapter list) */
+.scn .scn-tag i.scn-ab{display:none;font-style:normal}
+.scn .scn-tags .scn-tag.scn-cp b{display:none}
+.scn .scn-tags .scn-tag.scn-cp i.scn-ab{display:block;font-weight:600;font-size:13px;line-height:1.2;letter-spacing:-.005em;white-space:nowrap}
+.scn .scn-tags .scn-tag.scn-pl.scn-cp{padding:3px 8px 4px}
+/* one-line chips with a dot in the colour of their column capital */
+.scn .scn-tags .scn-tag.scn-dt{display:flex;align-items:center;gap:5px;padding:3px 9px 4px 6px;border-radius:999px;box-shadow:0 2.5px 0 var(--c,#F8B518)}
+.scn .scn-tags .scn-tag.scn-dt::before,.scn .scn-tags .scn-tag.scn-key::before{content:"";flex:none;width:10px;height:10px;box-sizing:border-box;border-radius:50%;background:var(--c,#F8B518);border:1.5px solid #0B2A3D}
+/* legend: no box, just a paper backing so grass and ground never cut through the words */
+.scn .scn-tags .scn-tag.scn-key{display:flex;align-items:center;gap:5px;padding:2px 6px 3px 4px;border:0;border-radius:7px;box-shadow:none;background:rgba(251,244,232,.92)}
+.scn .scn-tags .scn-tag.scn-key.scn-k12 i.scn-ab{font-size:12px}
+.scn .scn-sm .scn-tag{padding:6px 10px 7px;font-size:13px}
+.scn .scn-sm .scn-tag b{font-size:14px}
+/* little tail pointing at the anchor */
+.scn .scn-tag::after{content:"";position:absolute;width:9px;height:9px;background:#FBF4E8;border:1.5px solid #0B2A3D;border-width:0 1.5px 1.5px 0;box-sizing:border-box}
+.scn .scn-st::after{left:var(--tx,50%);bottom:-5.5px;transform:translateX(-50%) rotate(45deg)}
+.scn .scn-sb::after{left:var(--tx,50%);top:-5.5px;transform:translateX(-50%) rotate(225deg)}
+.scn .scn-sl::after{top:var(--ty,50%);right:-5.5px;transform:translateY(-50%) rotate(-45deg)}
+.scn .scn-sr::after{top:var(--ty,50%);left:-5.5px;transform:translateY(-50%) rotate(135deg)}
+.scn .scn-nt::after{display:none}
+@media (prefers-reduced-motion:reduce){.scn .scn-tag{transition:none!important}}
